@@ -144,6 +144,8 @@ function createBoard() {
         boardLayer.add(circle);
       }
     }
+
+
   }
 
   // Mise à jour des couches pour afficher les cellules et les numéros
@@ -370,6 +372,10 @@ function handleCellClick(row, col) {
     }
   } else {
     alert("cette cellule est déjà occupée.");
+  }
+ // le jeux s'arrete lorsque l'id est egale a 64
+   if (id === 64) {
+    endgame(id);
   }
 }
 
@@ -708,51 +714,55 @@ function endgame(id) {
       }
     }
   }
-}
-
-// // script.js
-// document.addEventListener("DOMContentLoaded", function () {
-//   var modal = document.getElementById("myModal");
-//   var btnBlack = document.getElementById("btnBlack");
-//   var btnWhite = document.getElementById("btnWhite");
-
-//   // Afficher le modal au chargement de la page
-//   modal.style.display = "block";
-
-//   // Gestion du clic sur le bouton Joueur Noir
-//   btnBlack.addEventListener("click", function () {
-//     modal.style.display = "none";
-//     // Logique pour commencer avec le joueur noir
-//     startGame("noir");
-//   });
-
-//   // Gestion du clic sur le bouton Joueur Blanc
-//   btnWhite.addEventListener("click", function () {
-//     modal.style.display = "none";
-//     // Logique pour commencer avec le joueur blanc
-//     startGame("blanc");
-//   });
-
-//   // Fonction de logique pour commencer le jeu
-//   function startGame(startingPlayer) {
-//     console.log("Le joueur qui commence est : " + startingPlayer);
-
-//     // Utiliser un lancer de pièce pour choisir le joueur qui commence
-//     var randomChoice = Math.random(); // Génère un nombre aléatoire entre 0 et 1
-
+  
+//   function chooseStartingPlayer() {
+//     const randomChoice = Math.random(0,1); // Generate a random number between 0 and 1
+  
 //     if (randomChoice < 0.5) {
 //       console.log("Le joueur noir commence !");
-//       // Ajoutez ici le code pour initialiser votre jeu avec le joueur noir qui commence
+//       return "black";
 //     } else {
 //       console.log("Le joueur blanc commence !");
-//       // Ajoutez ici le code pour initialiser votre jeu avec le joueur blanc qui commence
+//       return "white";
 //     }
 //   }
-// });
+  
+//  // Example usage:
+//   const startingPlayer = chooseStartingPlayer();
+//   console.log(`Le joueur qui commence est : ${startingPlayer}`);
+  
+// }
+
+}
+
+function choisirJoueurInitial() {
+  const choixAleatoire = Math.random(); // Générer un nombre aléatoire entre 0 et 1
+  const elementInfoJoueurInitial = document.getElementById("infoJoueurInitial");
+
+  let joueurInitial;
+  if (choixAleatoire < 0.5) {
+    joueurInitial = "noir";
+    elementInfoJoueurInitial.textContent = "Le joueur noir commence !";
+  } else {
+    joueurInitial = "blanc";
+    elementInfoJoueurInitial.textContent = "Le joueur blanc commence !";
+  }
+
+  alert(`Le joueur qui commence est : ${joueurInitial}`);
+  return joueurInitial;
+}
+
+   // Exemple d'utilisation :
+   const joueurInitial = choisirJoueurInitial();
+   console.log(`Le joueur qui commence est : ${joueurInitial}`);
+
 
 // Appel de la fonction pour créer le plateau de jeu
 createBoard();
 
 //initialiser le cach
 cachInitialisation();
-endgame()
+
+
+//Example usage:
+ //console.log(`Le joueur qui commence est : ${chooseStartingPlayer}`);

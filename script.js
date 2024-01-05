@@ -538,7 +538,7 @@ function scoreCalcul(row, col, color) {
   if (cach[row][col].color == "white") {
     white_scores[cach[row][col].id] = score;
     max = Math.max(...white_scores.filter(Number.isFinite));
-    document.getElementById("White-score").textContent = `NOIR : ${max} `;
+    document.getElementById("White-score").textContent = `BLANC : ${max} `;
     console.log(`Score ${color} :`, max);
   }
   if (cach[row][col].color == "black") {
